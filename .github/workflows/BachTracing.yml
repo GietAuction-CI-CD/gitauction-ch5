@@ -1,0 +1,10 @@
+name: Bash Tracing
+on: push
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+         set -x    #실행한 명령과 그결과 로그에 출력된다.
+         date
+         hostname
