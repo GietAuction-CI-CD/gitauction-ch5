@@ -1,0 +1,11 @@
+name: Log group
+on: push
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+     - run: |
+        echo "::group::show environment variables"   #로그 그룹화
+        printenv
+        echo "::debug::This is a debug log"
+        echo "::endgroup::"                          #로그 그룹화 종료
