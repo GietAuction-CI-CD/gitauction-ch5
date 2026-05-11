@@ -11,4 +11,4 @@ jobs:
   log: #job-id
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ input.greeting }}"  #입력 파라미터의 greeting갑 출력
+      - run: echo "${{ inputs.greeting }}"  #입력 파라미터의 greeting갑 출력
