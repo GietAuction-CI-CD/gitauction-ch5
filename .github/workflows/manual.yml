@@ -1,0 +1,14 @@
+name: Manual                             # 워크 플로우 명
+on:                                      # 워크 플로우 이벤트 훅 
+  workflow_dispatch:
+    inputs:                              # 입력 파라미터 지정키
+      greeting:                          # 입력 파라미터명
+       type: string                      # 데이터형
+       default: Hello                    # 기본값
+       required: true                    #파라미터 필수여부
+       description: A cheeful word       #파라미터 개요
+jobs:
+  log: #job-id
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ input.greeting }}"  #입력 파라미터의 greeting갑 출력
