@@ -1,0 +1,15 @@
+name: choice
+on:
+  workflow_dispatch:
+    inputs:
+      log-level:
+        type: choice
+        options:
+          - info
+          - warn
+          - error
+jobs:
+  log: #job-id
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ inputs.level-level }}"  #입력 파라미터의 greeting갑 출력
