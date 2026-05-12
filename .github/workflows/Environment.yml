@@ -6,7 +6,7 @@ on:                                      # 워크 플로우 이벤트 훅
        type: string                      # 데이터형
        default: Hello                    # 기본값
        required: true                    # 파라미터 필수여부
-       description: A env word       # 파라미터 개요
+       description: A env word           # 파라미터 개요
 jobs:
     run:
         runs-on: ubuntu-latest
@@ -14,6 +14,7 @@ jobs:
             BRANCH: main                  # 환경변수 정의
         steps:
             - run: echo "${BRANCH}"       # 셀 명령에서 잡  환경변수 참조
+            - run: echo "${{ inputs.envvariables }}"  #입력 파라미터의 envvariables값 출력
             - uses: actions/checkout@v4
               with:
                 ref: ${{ env.BRANCH }}    # env 콘텍스트를 경유해서 잡 환경변수 참조
