@@ -1,0 +1,9 @@
+name: MidleEnv
+on: push
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    env:
+      ACTOR: ${{ github.actor }} # 콘텍스트값을 환경변수에 저장
+    steps:
+      - run: echo "${ACTOR}"   # 환경변수를 경유해 콘텍스트의 속정 참조
