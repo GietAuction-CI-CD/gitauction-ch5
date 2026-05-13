@@ -1,5 +1,12 @@
 name: Log group
-on: push
+on: # 워크 플로우 이벤트 훅 
+  workflow_dispatch:
+    inputs:
+      greeting:                    # 입력 파라미터명
+       type: string                # 데이터형
+       default: Hello              # 기보값
+       required: true              #파라미터 필수여부
+       description: A cheeful word #파라미터 개요
 jobs:
   log:
     runs-on: ubuntu-latest
