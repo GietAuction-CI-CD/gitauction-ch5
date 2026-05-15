@@ -1,0 +1,17 @@
+name: jobNameming
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        type: choice
+        options:
+          - sandbox
+          - dev
+          - prod
+jobs:
+  CI-CD-01:
+    name: 해준이CI-CD
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        run: echo "build run"
