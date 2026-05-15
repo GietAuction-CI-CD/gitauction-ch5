@@ -1,0 +1,15 @@
+name: Run name  #워크플로명
+run-name: Run by @${{ github.actor }} # 워크플로 실행 지정, 컨텍스트 사용가능
+on: 
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options:
+          - info
+          - warn
+jobs:
+  Run-actor-name:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Hello'
