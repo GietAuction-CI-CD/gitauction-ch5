@@ -1,0 +1,8 @@
+name: GITHUB_ENV
+on: push
+jobs:
+    share-data3:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "RESULT=hello" >> "${GITHUB_ENV}" #GITHUB_ENV기록
+            - run: echo "${RESULT}"                       #일반 환경변수처럼 참조

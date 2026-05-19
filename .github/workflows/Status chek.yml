@@ -1,0 +1,9 @@
+name: Status Check
+on: push
+jobs:
+    fail-status:
+        runs-on: ubuntu-latest
+        steps:
+            - run: exit1              # 스탭1 종료 상태가 0이 아니므로 오류가 발생한다.
+            - run: echo "Hello"       # 스탭2 성공 
+              if: ${{ failure() }}    # 오류가 발생해도  failure 함수가 있으므로 실행된다.
