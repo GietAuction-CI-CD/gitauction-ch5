@@ -1,0 +1,24 @@
+name: Share job Data
+on:
+  workflow_dispatch:
+    inputs:
+      greeting:
+        type: string
+        default: Hello
+        required: true
+        description: A cheeful word
+jobs:
+    before:
+        runs-on: ubuntu-latest
+        steps:
+            - id: generate                                      # 스텝아이디
+              run: echo "result=Hello World" >> $GITHUB_OUTPUT  # 결과값을 저장할 때는 $GITHUB_OUTPUT 환경변수에 저장해야한다.
+        outputs:
+            result: ${{ steps.generate.outputs.result }}        # 결과값을 job의 output으로 저장한다. steps.{스텝아이디}.outputs.{결과값명} 형식으로 저장한다.
+    after:
+        runs-on: ubuntu-latest
+        needs: before                                        # before job이 끝나야 실행되는 after job
+        steps:
+            - env:
+                RESULT: ${{ needs.before.outputs.result }}    # before job의 결과값을 환경변수로 저장한다. needs.{job아이디}.outputs.{결과값명} 형식으로 저장한다.
+              run: echo "The result from before job is ${RESULT}" # 환경변수로 저장한 결과값을 사용한다.
