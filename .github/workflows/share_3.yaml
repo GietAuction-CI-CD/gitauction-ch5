@@ -1,5 +1,12 @@
 name: GITHUB_ENV
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options:
+          - info
+          - warn
 jobs:
     share-data3:
         runs-on: ubuntu-latest

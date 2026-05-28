@@ -1,5 +1,12 @@
 name: toJSON
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options:
+          - info
+          - warn
 jobs:
   dump:
     runs-on: ubuntu-latest

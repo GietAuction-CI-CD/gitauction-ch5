@@ -1,5 +1,12 @@
 name: GITHUB_OUTPUT
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options:
+          - info
+          - warn
 jobs:
     share-data2:
         runs-on: ubuntu-latest

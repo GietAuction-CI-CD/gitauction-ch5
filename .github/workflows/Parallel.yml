@@ -1,5 +1,12 @@
 name: Parallel jobs
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options:
+          - info
+          - warn
 jobs:  # jobs 키에 여러 개의 잡을 정의하면 병렬로 실행된다.
   first:
     runs-on: ubuntu-latest

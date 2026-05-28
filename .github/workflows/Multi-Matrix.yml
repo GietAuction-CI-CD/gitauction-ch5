@@ -1,5 +1,12 @@
 name: Multi-Matrix
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options:
+          - info
+          - warn
 jobs:
   print:
      strategy:

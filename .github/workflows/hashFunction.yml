@@ -1,5 +1,12 @@
 name: Hash Function
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options:
+          - info
+          - warn
 jobs:
     hash256:
         runs-on: ubuntu-latest

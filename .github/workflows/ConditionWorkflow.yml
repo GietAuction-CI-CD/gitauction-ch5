@@ -1,5 +1,12 @@
 name: Conditions workflow
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options:
+          - info
+          - warn
 jobs:
   skip-or-run:
     if: ${{ github.actor == 'octocat'}}
