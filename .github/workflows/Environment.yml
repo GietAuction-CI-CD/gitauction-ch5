@@ -3,18 +3,17 @@ on:                                      # 워크 플로우 이벤트 훅
   workflow_dispatch:
     inputs:                              # 입력 파라미터 지정키
       envvariables:                      # 입력 파라미터명
-       type: string                      # 데이터형
-       default: Hello                    # 기본값
-       required: true                    # 파라미터 필수여부
+       type: environment                      # 데이터형
+       default: test                    # 기본값
+       required: false                    # 파라미터 필수여부
        description: A env word           # 파라미터 개요
 jobs:
     run:
         runs-on: ubuntu-latest
+        environment: ${{ inputs.envvariables }}  # 입력 파라미터를 환경으로 지정
         env:
-            BRANCH: main                  # 환경변수 정의
+          NAME: ${{ vars.NAME }}                  # 환경변수 정의
+          PASS: ${{ secrets.PASS }}               # 시크릿 참조
         steps:
-            - run: echo "${BRANCH}"       # 셀 명령에서 잡  환경변수 참조
-            - run: echo "${{ inputs.envvariables }}"  #입력 파라미터의 envvariables값 출력
-            - uses: actions/checkout@v4
-              with:
-                ref: ${{ env.BRANCH }}    # env 콘텍스트를 경유해서 잡 환경변수 참조
+            - run: echo "${NAME}"       # 셀 명령에서 잡  환경변수 참조
+            - run: echo "${PASS:0:1} ${PASS#?}"       # 셀 명령에서 시크릿 참조
